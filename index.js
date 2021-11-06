@@ -24,7 +24,6 @@ app.get('/exercise', (req, res) => {
 async function wgr_request(req) {
     try {
 
-
         var cat = req.query.category;
         var cat_id = 10;
 
@@ -46,10 +45,9 @@ async function wgr_request(req) {
     
         let result = await axios.get(`https://wger.de/api/v2/exercise/?language=2&limit=30&category=${cat_id}`);
         let data = result.data;
-        //console.log(req.query);
-        //console.log(`https://wger.de/api/v2/exercise/?language=2&limit=100&category=${req.query.category}`)
+ 
 
-        var res_arr=result.data.results;
+        //var res_arr=result.data.results;
 
         // res_arr.forEach((arrObj) => {
         //     delete arrObj['uuid'];
@@ -65,7 +63,7 @@ async function wgr_request(req) {
         //   });
 
 
-        res.send(res_arr);
+        res.send(data);
         
     } catch (error) {
         console.log(error.response);
